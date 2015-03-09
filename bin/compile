@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# bin/compile <build-dir> <cache-dir> <env-dir>
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
+TMP_DIR=/tmp
+ROSWELL_DIR=$TMP_DIR/roswell
+QLOT_DIR=$TMP_DIR/qlot
+CLACK_DIR=$TMP_DIR/clack
+
+ROSWELL_REPO=https://github.com/snmsts/roswell.git
+ROSWELL_BR=release
+QLOT_REPO=https://github.com/fukamachi/qlot.git
+QLOT_BR=master
+CLACK_REPO=https://github.com/fukamachi/clack.git
+CLACK_BR=master
+
+if [ -d $ROSWELL_DIR ]; then
+    git clone -b $ROSWELL_BR $ROSWELL_REPO
+fi
+
+if [ -d $QLOT_REPO ]; then
+    git clone -b $QLOT_BR $QLOT_REPO
+fi
+
+if [ -d $CLACK_REPO ]; then
+    git clone -b $CLACK_BR $CLACK_REPO
+fi
