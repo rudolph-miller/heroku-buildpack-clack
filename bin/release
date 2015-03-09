@@ -5,4 +5,5 @@ cat << EOF
 config_vars:
     PATH: /usr/bin:/bin:/app/usr/bin
     LD_LIBRARY_PATH: /app/usr/lib
+    CL_SOURCE_REGISTRY: (:source-registry (:directory "/app/"))
 EOF
