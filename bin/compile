@@ -5,10 +5,18 @@
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
+
 TMP_DIR=/tmp
-ROSWELL_DIR=$TMP_DIR/roswell
-QLOT_DIR=$TMP_DIR/qlot
-CLACK_DIR=$TMP_DIR/clack
+USR_DIR=$HOME/usr
+CL_DIR=$HOME/common_lisp
+
+ROSWELL_DIR=$CL_DIR/roswell
+QLOT_DIR=$CL_DIR/qlot
+CLACK_DIR=$CL_DIR/clack
+
+LIBEV_VERSION=4.19
+
+LIBEV_DIR=$TMP_DIR/libev-$LIBEV_VERSION
 
 ROSWELL_REPO=https://github.com/snmsts/roswell.git
 ROSWELL_BR=release
@@ -16,15 +24,49 @@ QLOT_REPO=https://github.com/fukamachi/qlot.git
 QLOT_BR=master
 CLACK_REPO=https://github.com/fukamachi/clack.git
 CLACK_BR=master
+LIBEV_URL=http://dist.schmorp.de/libev/libev-$LIBEV_VERSION.tar.gz
 
-if [ -d $ROSWELL_DIR ]; then
-    git clone -b $ROSWELL_BR $ROSWELL_REPO
+ROS_COMMAND=$USR_DIR/bin/ros
+QLOT_COMMAND=$QLOT_DIR/bin/qlot
+CLACKUP_COMMAND=$CLACK_DIR/bin/clackup
+
+if [ ! -d $USR_DIR ]; then
+    mkdir -p $USR_DIR
+    mkdir -p $USR_DIR/bin
+    mkdir -p $USR_DIR/lib
 fi
 
-if [ -d $QLOT_REPO ]; then
+if [ ! -d $CL_DIR ]; then
+    mkdir -p $CL_DIR
+fi
+
+if [ ! -d $ROSWELL_DIR ]; then
+    cd $CL_DIR
+    git clone -b $ROSWELL_BR $ROSWELL_REPO
+    cd $ROSWELL_DIR
+    sh bootstrap
+    ./configure --prefix=$USR_DIR
+    make
+    make install
+fi
+
+if [ ! -d $QLOT_REPO ]; then
+    cd $CL_DIR
     git clone -b $QLOT_BR $QLOT_REPO
 fi
 
-if [ -d $CLACK_REPO ]; then
+if [ ! -d $CLACK_REPO ]; then
+    cd $CL_DIR
     git clone -b $CLACK_BR $CLACK_REPO
 fi
+
+if [ ! -d $LIBEV_DIR ]; then
+    cd $TMP_DIR
+    curl $LIBEV_URL | tar zxv
+    cd $LIBEV_DIR
+    ./configure --enable-shared --prefix=$USR_DIR
+    make
+    make install
+fi
+
+
