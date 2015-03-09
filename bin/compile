@@ -40,7 +40,7 @@ if [ ! -d $CL_DIR ]; then
     mkdir -p $CL_DIR
 fi
 
-if [ ! -d $ROSWELL_DIR ]; then
+if [ ! -f $ROS_COMMAND ]; then
     cd $CL_DIR
     git clone -b $ROSWELL_BR $ROSWELL_REPO
     cd $ROSWELL_DIR
@@ -50,17 +50,17 @@ if [ ! -d $ROSWELL_DIR ]; then
     make install
 fi
 
-if [ ! -d $QLOT_REPO ]; then
+if [ ! -f $QLOT_COMMAND ]; then
     cd $CL_DIR
     git clone -b $QLOT_BR $QLOT_REPO
 fi
 
-if [ ! -d $CLACK_REPO ]; then
+if [ ! -f $CLACKUP_COMMAND ]; then
     cd $CL_DIR
     git clone -b $CLACK_BR $CLACK_REPO
 fi
 
-if [ ! -d $LIBEV_DIR ]; then
+if [ ! -f $USR_DIR/lib/libev.so ]; then
     cd $TMP_DIR
     curl $LIBEV_URL | tar zxv
     cd $LIBEV_DIR
