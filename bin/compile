@@ -7,8 +7,8 @@ CACHE_DIR=$2
 ENV_DIR=$3
 
 TMP_DIR=/tmp
-USR_DIR=$HOME/usr
-CL_DIR=$HOME/common_lisp
+USR_DIR=$BUILD_DIR/usr
+CL_DIR=$BUILD_DIR/common_lisp
 
 ROSWELL_DIR=$CL_DIR/roswell
 QLOT_DIR=$CL_DIR/qlot
