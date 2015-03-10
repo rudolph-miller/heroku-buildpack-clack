@@ -70,9 +70,8 @@ PATH=$PATH:/app/usr/bin
 export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib:/app/usr/lib
 export CL_SOURCE_REGISTRY=/app
 ln -s /app $BUILD_DIR
-ros setup
 EOF
 
 echo "-----> COMPILE APP"
 export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib:$BUILD_DIR/usr/lib
-$ROS_COMMAND -e "(push \"$BUILD_DIR/\" asdf:*central-registry*)" -e "(ql:quickload :clack)" -e "(sb-ext:save-lisp-and-die #P\"$BUILD_DIR/usr/bin/start\" :toplevel #'(lambda () (clack:clackup #P\"$BUILD_DIR/app.lisp\" :server :woo :port (asdf::getenv "PORT"))) :executable t)" 1>/dev/null
+$ROS_COMMAND -e "(push \"$BUILD_DIR/\" asdf:*central-registry*)" -e "(ql:quickload :clack)" -e "(sb-ext:save-lisp-and-die #P\"$BUILD_DIR/usr/bin/start\" :toplevel #'(lambda () (clack:clackup #P\"/app/app.lisp\" :server :woo :port (asdf::getenv \"PORT\"))) :executable t)" 1>/dev/null
