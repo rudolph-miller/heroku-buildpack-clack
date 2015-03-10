@@ -5,7 +5,7 @@ cat << EOF
 config_vars:
     PATH: /app/usr/bin:/usr/local/bin:/usr/bin:/bin
     LD_LIBRARY_PATH: /app/usr/lib:/usr/local/lib:/usr/lib
-    CL_SOURCE_REGISTRY: (:source-registry (:directory "/app/"))
+    CL_SOURCE_REGISTRY: /app
 default_process_types:
   web: clackup --server woo --port $PORT app.lisp
 EOF
