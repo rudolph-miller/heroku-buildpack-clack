@@ -73,5 +73,5 @@ ln -s /app $BUILD_DIR
 EOF
 
 echo "-----> LOAD CLACK AND APP"
-export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib:/app/usr/lib
+export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib:$BUILD_DIR/usr/lib
 $ROS_COMMAND -e "(push \"$BUILD_DIR/\" asdf:*central-registry*)" -e "(ql:quickload :clack)" -e "(clack:clackup \"$BUILD_DIR/app.lisp\" :server :woo)" 1>/dev/null
