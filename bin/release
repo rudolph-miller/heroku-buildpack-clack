@@ -7,5 +7,5 @@ config_vars:
     LD_LIBRARY_PATH: /app/usr/lib:/usr/local/lib:/usr/lib
     CL_SOURCE_REGISTRY: /app
 default_process_types:
-  web: ros -e "(push \"/app/\" asdf:*central-registry*)" -e "(ql:quickload :clack)" -e "(clack:clackup \"/app/app.lisp\" :server :woo :port $PORT)"
+  web: /app/usr/bin/ros -e "(push \"/app/\" asdf:*central-registry*)" -e "(ql:quickload :clack)" -e "(clack:clackup \"/app/app.lisp\" :server :woo :port $PORT)"
 EOF
