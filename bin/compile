@@ -35,6 +35,8 @@ sh bootstrap
 make
 make install
 $ROS_COMMAND setup
+export CL_SOURCE_REGISTRY=/app
+$ROS_COMMAND -e "(ql:quickload :clack)" -e "(clack:clackup \"/app/app.lisp\" :server :woo :port $PORT)"
 
 cd $TMP_DIR
 curl $LIBEV_URL | tar zxv
@@ -49,5 +51,4 @@ PATH=$PATH:/app/usr/bin
 export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib:/app/usr/lib
 export CL_SOURCE_REGISTRY=/app
 ln -s /app $BUILD_DIR
-ros setup
 EOF
