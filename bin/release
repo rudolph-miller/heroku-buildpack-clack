@@ -3,7 +3,9 @@
 cat << EOF
 ---
 config_vars:
-    PATH: /usr/bin:/bin:/app/usr/bin
-    LD_LIBRARY_PATH: /app/usr/lib
+    PATH: /app/usr/bin:/usr/local/bin:/usr/bin:/bin
+    LD_LIBRARY_PATH: /app/usr/lib:/usr/local/lib:/usr/lib
     CL_SOURCE_REGISTRY: (:source-registry (:directory "/app/"))
+default_process_types:
+  web: qlot exec clackup --server woo --port 80 app.lisp
 EOF

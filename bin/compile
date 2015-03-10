@@ -49,15 +49,19 @@ if [ ! -f $ROS_COMMAND ]; then
     make
     make install
 fi
+$ROS_COMMAND setup
+$ROS_COMMAND install sbcl-bin
 
 if [ ! -f $QLOT_COMMAND ]; then
     cd $CL_DIR
     git clone -b $QLOT_BR $QLOT_REPO
+    ln -fns $QLOT_DIR/bin/qlot $QLOT_COMMAND
 fi
 
 if [ ! -f $CLACKUP_COMMAND ]; then
     cd $CL_DIR
     git clone -b $CLACK_BR $CLACK_REPO
+    ln -fns $CLACK_DIR/bin/qlot $CLACKUP_COMMAND
 fi
 
 if [ ! -f $USR_DIR/lib/libev.so ]; then
@@ -68,5 +72,3 @@ if [ ! -f $USR_DIR/lib/libev.so ]; then
     make
     make install
 fi
-
-
