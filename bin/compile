@@ -31,41 +31,41 @@ echo "-----> ROSWELL"
 cd $CL_DIR
 
 echo "-----> ROSWELL: DOWNLOAD"
-git clone -b $ROSWELL_BR $ROSWELL_REPO >/dev/null 2>&1
+git clone -b $ROSWELL_BR $ROSWELL_REPO 1>/dev/null
 
 echo "-----> ROSWELL: BOOTSTRAP"
 cd $ROSWELL_DIR
-sh bootstrap >/dev/null 2>&1
-./configure --prefix=$USR_DIR >/dev/null 2>&1
+sh bootstrap 1>/dev/null
+./configure --prefix=$USR_DIR 1>/dev/null
 
 echo "-----> ROSWELL: MAKE"
-make >/dev/null 2>&1
+make 1>/dev/null
 
 echo "-----> ROSWELL: MAKE INSTALL"
-make install >/dev/null 2>&1
+make install 1>/dev/null
 
 echo "-----> ROSWELL: SETUP"
-$ROS_COMMAND setup >/dev/null 2>&1
+$ROS_COMMAND setup 1>/dev/null
 
 echo "-----> ROSWELL: LOAD CLACK AND APP"
 export CL_SOURCE_REGISTRY=/app
-$ROS_COMMAND -e "(ql:quickload :clack)" -e "(clack:clackup \"/app/app.lisp\" :server :woo)" >/dev/null 2>&1
+$ROS_COMMAND -e "(ql:quickload :clack)" -e "(clack:clackup \"/app/app.lisp\" :server :woo)" 1>/dev/null
 
 echo "-----> LIBEV"
 cd $TMP_DIR
 
 echo "-----> LIBEV: DOWNLOAD"
-curl $LIBEV_URL | tar zxv >/dev/null 2>&1
+curl $LIBEV_URL | tar zxv 1>/dev/null
 
 echo "-----> LIBEV: CONFIGURE"
 cd $LIBEV_DIR
-./configure --enable-shared --prefix=$USR_DIR >/dev/null 2>&1
+./configure --enable-shared --prefix=$USR_DIR 1>/dev/null
 
 echo "-----> LIBEV: MAKE"
-make >/dev/null 2>&1
+make 1>/dev/null
 
 echo "-----> LIBEV: MAKE INSTALL"
-make install >/dev/null 2>&1
+make install 1>/dev/null
 
 echo "-----> CREATE .profile.d script"
 mkdir -p $BUILD_DIR/.profile.d
