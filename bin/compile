@@ -43,3 +43,10 @@ cd $LIBEV_DIR
 ./configure --enable-shared --prefix=$USR_DIR
 make
 make install
+
+mkdir -p $BUILD_DIR/.profile.d
+echo <<EOF >> $BUILD_DIR/.profile.d/common.sh
+    export PATH=$PATH:/app/usr/bin
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/app/usr/lib
+    export CL_SOURCE_REGISTRY=/app
+EOF
