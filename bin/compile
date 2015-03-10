@@ -48,7 +48,7 @@ echo "-----> ROSWELL: SETUP"
 $ROS_COMMAND setup 1>/dev/null
 
 echo "-----> ROSWELL: LOAD CLACK AND APP"
-$ROS_COMMAND -e "(push \"$BUILD_DIR/common-lisp\" asdf:*central-registry*)" -e "(ql:quickload :clack)" -e "(clack:clackup \"$BUILD_DIR/app.lisp\" :server :woo)" 1>/dev/null
+$ROS_COMMAND -e "(push \"$BUILD_DIR/\" asdf:*central-registry*)" -e "(ql:quickload :clack)" -e "(clack:clackup \"$BUILD_DIR/app.lisp\" :server :woo)" 1>/dev/null
 
 echo "-----> LIBEV"
 cd $TMP_DIR
