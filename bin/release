@@ -3,5 +3,5 @@
 cat << EOF
 ---
 default_process_types:
-  web: ros -e "(ql:quickload :clack)" -e "(clack:clackup \"$0/app.lisp\" :server :woo :port $PORT :use-thread nil)"
+  web: ros -e "(ql:quickload :clack)" -e "(clack:clackup \"/app/app.lisp\" :server :woo :port $PORT :use-thread nil)"
 EOF
