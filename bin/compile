@@ -49,7 +49,7 @@ $ROS_COMMAND setup 1>/dev/null
 
 echo "-----> ROSWELL: LOAD CLACK AND APP"
 export CL_SOURCE_REGISTRY=/app
-$ROS_COMMAND -e "(ql:quickload :clack)" -e "(clack:clackup \"/app/app.lisp\" :server :woo)" 1>/dev/null
+$ROS_COMMAND -e "(ql:quickload :clack)" -e "(clack:clackup \"$BUILD_DIR/app.lisp\" :server :woo)" 1>/dev/null
 
 echo "-----> LIBEV"
 cd $TMP_DIR
