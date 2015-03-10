@@ -7,5 +7,5 @@ config_vars:
     LD_LIBRARY_PATH: /app/usr/lib:/usr/local/lib:/usr/lib
     CL_SOURCE_REGISTRY: (:source-registry (:directory "/app/"))
 default_process_types:
-  web: qlot exec clackup --server woo --port 80 app.lisp
+  web: clackup --server woo --port $PORT app.lisp
 EOF
