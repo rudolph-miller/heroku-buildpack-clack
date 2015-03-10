@@ -2,10 +2,6 @@
 
 cat << EOF
 ---
-config_vars:
-    PATH: /app/usr/bin:/usr/local/bin:/usr/bin:/bin
-    LD_LIBRARY_PATH: /app/usr/lib:/usr/local/lib:/usr/lib
-    CL_SOURCE_REGISTRY: /app
 default_process_types:
-  web: /app/usr/bin/ros -e "(push \"/app/\" asdf:*central-registry*)" -e "(ql:quickload :clack)" -e "(clack:clackup \"/app/app.lisp\" :server :woo :port $PORT :use-thread nil)"
+  web: ros -e "(ql:quickload :clack)" -e "(clack:clackup \"$0/app.lisp\" :server :woo :port $PORT :use-thread nil)"
 EOF
