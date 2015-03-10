@@ -46,8 +46,7 @@ make install
 mkdir -p $BUILD_DIR/.profile.d
 cat << EOF >> $BUILD_DIR/.profile.d/common.sh
 PATH=$PATH:/app/usr/bin
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/app/usr/lib
-CL_SOURCE_REGISTRY=/app
+export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib:/app/usr/lib
+export CL_SOURCE_REGISTRY=/app
 ln -s /app $BUILD_DIR
-ros setup
 EOF
