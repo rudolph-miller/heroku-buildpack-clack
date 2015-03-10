@@ -35,7 +35,6 @@ sh bootstrap
 make
 make install
 $ROS_COMMAND setup
-$ROS_COMMAND install sbcl-bin
 
 cd $TMP_DIR
 curl $LIBEV_URL | tar zxv
@@ -50,4 +49,5 @@ PATH=$PATH:/app/usr/bin
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/app/usr/lib
 CL_SOURCE_REGISTRY=/app
 ln -s /app $BUILD_DIR
+ros setup
 EOF
